@@ -1,47 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    //private Player player;
-    //public int playerId = 0;
     private float speed = 5f;
-    [SerializeField]
-    public GameObject crossHair;
+    [SerializeField] public GameObject crossHair;
 
     public GameObject bulletPrefab;
+    public bool isImmune = false;
+    public float immunityTime = 5.0f;
 
-    public float maxHealth = 100f;
-    public float currentHealth;
-    public HealthBarScript healthBar;
-    
-    void Awake()
-    {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        //player = ReInput.players.GetPlayer(playerId);
-    }
+    public GameObject continuePanel;
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-        transform.position = transform.position = transform.position + movement * Time.deltaTime * speed;
+        bool playerAlive = GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().isAlive;
+        if(playerAlive == true){
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            transform.position = transform.position = transform.position + movement * Time.deltaTime * speed;
 
-        AimandShoot();
+            AimandShoot();
 
-        if(Input.GetKey("v")){
-            TakeDamage(10.0f);
-            Debug.Log("Health decreased");
+            if(isImmune == true){
+                immunityTime -= Time.deltaTime;
+                Debug.Log("Immunity Ongoing");
+
+                if(immunityTime <= 0.0f){
+                    timerEnded();
+                    Debug.Log("DING DING, Immunity stopped");
+                }
+            }
         }
-   
-    }
-
-    void TakeDamage(float damage){
-        currentHealth -= damage;
-
-        healthBar.SetHealth(currentHealth);
+        else{
+            continuePanel.SetActive(true);
+            GameObject.Find("Spawner Controller").GetComponent<SpawnerController>().spawnAllowed = false;
+        }
     }
 
     private void AimandShoot(){
@@ -59,7 +54,7 @@ public class PlayerScript : MonoBehaviour
             shootingDirection.Normalize();
             if(Input.GetButtonDown("Jump")){ //Fire1, Jump
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().velocity = shootingDirection * 5.0f;
+                bullet.GetComponent<Rigidbody2D>().velocity = shootingDirection * 10.0f;
                 bullet.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
 
                 Destroy(bullet, 2.0f);
@@ -68,5 +63,34 @@ public class PlayerScript : MonoBehaviour
         } else{
             crossHair.SetActive(false);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D target) {
+        if(isImmune == false){
+            if (target.tag == "Enemy5") {
+            GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 5f;
+            Debug.Log("You collided with an Enemy. Decrease health by 5 points");
+            }
+
+            else if (target.tag == "Enemy10") {
+            GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 10f;
+            Debug.Log("You collided with an Enemy. Decrease health by 10 points");
+            }
+
+            else if (target.tag == "Enemy20") {
+            GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 20f;
+            Debug.Log("You collided with an Enemy. Decrease health by 20 points");
+            }
+        }
+
+        else{
+            Debug.Log("Your vulnerable to the virus");
+        }
+		
+	}
+
+    void timerEnded(){
+        isImmune = false;
+        immunityTime = 5.0f;
     }
 }

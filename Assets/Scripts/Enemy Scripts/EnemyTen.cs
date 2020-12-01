@@ -8,16 +8,20 @@ public class EnemyTen : MonoBehaviour
     private Transform target;
     public float stoppingDistance;
 
-
     void Start()
     {
-        target = GameObject. FindGameObjectWithTag("Player").GetComponent<Transform>();    
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-
     void Update() {
-        if(Vector2.Distance(transform.position, target.position) > stoppingDistance){
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        bool approachTarget = GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().isAlive;
+        if(approachTarget == true){
+            if(Vector2.Distance(transform.position, target.position) > stoppingDistance){
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
+        }
+        else{
+            Destroy(gameObject);
         }
     }
 }

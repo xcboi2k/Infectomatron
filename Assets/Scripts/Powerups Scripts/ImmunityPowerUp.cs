@@ -13,8 +13,9 @@ public class ImmunityPowerUp : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D target) {
       if(target.tag == "Player"){
-          Destroy(gameObject);
-          Debug.Log("Increase Immunity");
+        GameObject.Find("Player").GetComponent<PlayerScript>().isImmune = true;
+        Destroy(gameObject);
+        Debug.Log("Immunity activated.");
       }  
     }
 }

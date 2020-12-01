@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Bullet
+  - Enemy5
+  - Enemy10
+  - Enemy20
+  - Enemy
+  - Immunity
   layers:
   - Default
   - TransparentFX

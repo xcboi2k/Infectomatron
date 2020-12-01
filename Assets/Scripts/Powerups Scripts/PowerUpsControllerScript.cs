@@ -13,7 +13,12 @@ public class PowerUpsControllerScript : MonoBehaviour
     void Start()
     {
         spawnAllowed = true;
-        InvokeRepeating("SpawnAPowerUp", 0f, 3f); 
+        InvokeRepeating("SpawnAPowerUp", 2f, 5f); 
+    }
+
+    void Update()
+    {
+        
     }
 
     // Update is called once per frame
@@ -21,7 +26,6 @@ public class PowerUpsControllerScript : MonoBehaviour
     {
         if (spawnAllowed){
             position = new Vector3(Random.Range(-19.25f, 19.25F), Random.Range(-8.75f, 8.75f));
-            //randomSpawn = Random.Range(-19.25f, 8.75f);
             randomPowerUps = Random.Range(0, powerUps.Length);
             Instantiate (powerUps [randomPowerUps], position, Quaternion.identity);
         }

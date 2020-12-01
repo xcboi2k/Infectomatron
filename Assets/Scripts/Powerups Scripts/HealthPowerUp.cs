@@ -15,6 +15,10 @@ public class HealthPowerUp : MonoBehaviour
       if(target.tag == "Player"){
           Destroy(gameObject);
           Debug.Log("Increase Health");
+
+          if(GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth < 100f){
+              GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth += 20f;
+          }
       }  
     }
 }

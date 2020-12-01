@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1733986673074559399}
   - component: {fileID: 5423427044887683014}
   - component: {fileID: 9111754327993146327}
+  - component: {fileID: 8256189574307804800}
   m_Layer: 0
   m_Name: ProjectileE5
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b37e429b5c634d94bbc481db4e771b9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aa8fd99aee51a443825b1c5f14a90b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,4 +131,16 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &8256189574307804800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690288451622013550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb867bb3faa792409ef69389386c56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
