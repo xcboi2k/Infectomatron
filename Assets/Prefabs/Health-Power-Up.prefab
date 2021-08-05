@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1458789916603643211}
   - component: {fileID: 1458789916603643210}
   - component: {fileID: 1458789916603643221}
-  - component: {fileID: 1458789916603643220}
   - component: {fileID: 1458789916603643208}
+  - component: {fileID: 1458789916603643220}
   m_Layer: 8
   m_Name: Health-Power-Up
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1458789916603643223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.34, y: -1.6, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 856f7a01188f4534c95eb5cc9c076c2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5daa33e4fdb488e418a06c4910fde95c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,31 +98,19 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020293474, y: -0.00000023841858}
+  m_Offset: {x: 0.0017693043, y: 0.09798527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
+    oldSize: {x: 2.88, y: 2.14}
     newSize: {x: 8, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.0370097, y: 7.05703}
+  m_Size: {x: 0.42160845, y: 0.7284069}
   m_EdgeRadius: 0
---- !u!114 &1458789916603643220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458789916603643223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ccd6f33e5e567418823f7663c29da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1458789916603643208
 Rigidbody2D:
   serializedVersion: 4
@@ -144,3 +132,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1458789916603643220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458789916603643223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ccd6f33e5e567418823f7663c29da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,9 +7,27 @@ public class CameraScript : MonoBehaviour
     private Transform player;
     public float minX, maxX,minY, maxY;
 
+    private const string selectedCharacter = "Selected Character";
+
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        int getCharacter = PlayerPrefs.GetInt(selectedCharacter);
+
+        if (getCharacter == 1){
+            player = GameObject.FindGameObjectWithTag("CharacterX").transform;
+        }
+
+        else if (getCharacter == 2){
+            player = GameObject.FindGameObjectWithTag("Normal Person").transform;
+        }
+
+        else if (getCharacter == 3){
+            player = GameObject.FindGameObjectWithTag("Soldier").transform;
+        }
+        
+        else if (getCharacter == 4){
+            player = GameObject.FindGameObjectWithTag("Doctor").transform;
+        }
     }
 
     // Update is called once per frame

@@ -10,6 +10,11 @@ TagManager:
   - Enemy20
   - Enemy
   - Immunity
+  - Normal Person
+  - Doctor
+  - Soldier
+  - CharacterX
+  - Enemy Boss
   layers:
   - Default
   - TransparentFX

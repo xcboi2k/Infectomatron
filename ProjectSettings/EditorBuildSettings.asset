@@ -5,18 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: a45dd43a1b346b14d8b2fabc36e779e1
   - enabled: 1
+    path: Assets/Scenes/SelectCharacterScene.unity
+    guid: 13bed3442beeb334cb94e88cd8087ebe
+  - enabled: 1
     path: Assets/Scenes/SelectModeScene.unity
     guid: f672dcdfbdf595f40b657db792ea880a
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 3a0986ef871a326459e4af47896130f7
@@ -26,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExtremeGameplayScene.unity
     guid: 8f767b9f563fe4c4c934bb976f0daa87
+  - enabled: 1
+    path: Assets/Scenes/TimeAttackGameplayScene.unity
+    guid: 4d6be0fb6bd737e459c0bceb692649d9
+  - enabled: 1
+    path: Assets/Scenes/BossGameplayScene.unity
+    guid: a09d6e05075b5344ebc06e37288b3d00
   m_configObjects: {}

@@ -14,13 +14,17 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject continuePanel;
 
+    public Animator defaultPlayerAnim;
+
+    public AudioSource playerAudioSource;
+    public AudioClip fireClip, hurtClip, dieClip, healthClip, immunityClip;
+
     void Update()
     {
         bool playerAlive = GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().isAlive;
         if(playerAlive == true){
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-            transform.position = transform.position = transform.position + movement * Time.deltaTime * speed;
-
+            
+            Movement();
             AimandShoot();
 
             if(isImmune == true){
@@ -56,6 +60,7 @@ public class PlayerScript : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().velocity = shootingDirection * 10.0f;
                 bullet.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+                playerAudioSource.PlayOneShot(fireClip);
 
                 Destroy(bullet, 2.0f);
                 Debug.Log("FIRE!");
@@ -65,21 +70,37 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void Movement(){
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+        
+        defaultPlayerAnim.SetFloat("Horizontal", movement.x);
+        defaultPlayerAnim.SetFloat("Vertical", movement.y);
+        defaultPlayerAnim.SetFloat("Magnitude", movement.magnitude);
+
+        transform.position = transform.position + movement * Time.deltaTime * speed;
+    }
+
     void OnTriggerEnter2D(Collider2D target) {
         if(isImmune == false){
             if (target.tag == "Enemy5") {
             GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 5f;
             Debug.Log("You collided with an Enemy. Decrease health by 5 points");
+            playerAudioSource.PlayOneShot(hurtClip);
+
             }
 
             else if (target.tag == "Enemy10") {
             GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 10f;
             Debug.Log("You collided with an Enemy. Decrease health by 10 points");
+            playerAudioSource.PlayOneShot(hurtClip);
+
             }
 
             else if (target.tag == "Enemy20") {
             GameObject.Find("Gameplay Controller").GetComponent<HealthScript>().currentHealth -= 20f;
             Debug.Log("You collided with an Enemy. Decrease health by 20 points");
+            playerAudioSource.PlayOneShot(hurtClip);
+            
             }
         }
 

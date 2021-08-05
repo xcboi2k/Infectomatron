@@ -16,10 +16,28 @@ public class EnemyTwentyExtreme : MonoBehaviour
 
     float radius, moveSpeed;
 
+    private const string selectedCharacter = "Selected Character";
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        int getCharacter = PlayerPrefs.GetInt(selectedCharacter);
+
+        if (getCharacter == 1){
+            target = GameObject.FindGameObjectWithTag("CharacterX").GetComponent<Transform>();
+        }
+
+        else if (getCharacter == 2){
+            target = GameObject.FindGameObjectWithTag("Normal Person").GetComponent<Transform>();
+        }
+
+        else if (getCharacter == 3){
+            target = GameObject.FindGameObjectWithTag("Soldier").GetComponent<Transform>();
+        }
+
+        else if (getCharacter == 4){
+            target = GameObject.FindGameObjectWithTag("Doctor").GetComponent<Transform>();
+        }
+        
         radius = 5f;
         moveSpeed = 5f;
     }
